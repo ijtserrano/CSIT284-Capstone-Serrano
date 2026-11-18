@@ -1,0 +1,10 @@
+^C:\USERS\L12X19W32.LABHCI\DOCUMENTS\CAPSTONE-SERRANO\CAPSTONE_SERRANO\BUILD\WINDOWS\X64\CMAKEFILES\A72D56AADDF8517DDBBF8F056E13C160\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/L12X19W32.LABHCI/Documents/CAPSTONE-Serrano/capstone_serrano/windows -BC:/Users/L12X19W32.LABHCI/Documents/CAPSTONE-Serrano/capstone_serrano/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/L12X19W32.LABHCI/Documents/CAPSTONE-Serrano/capstone_serrano/build/windows/x64/capstone_serrano.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

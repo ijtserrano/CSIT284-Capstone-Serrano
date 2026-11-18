@@ -1,17 +1,14 @@
-# capstone_serrano
+# Attendance Checker (QR-based)
 
-A new Flutter project.
+**Name:** IJ Cromwell Taban Serrano
+**Workstation Number:** 32
 
-## Getting Started
+## Project Description
 
-This project is a starting point for a Flutter application.
+Attendance Checker is a Flutter mobile app that makes recording attendance in a classroom fast and paperless. Each student is identified by a unique QR code. An instructor scans the code with the device camera, and the app logs the student as present with the date and time.
 
-A few resources to get you started if this is your first Flutter project:
+The app lets instructors view a list of students and open each student's details. It replaces handwritten sign-in sheets, saves time on roll calls, and gives instructors a clear view of who attended.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter / Dart

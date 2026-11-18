@@ -1,0 +1,10 @@
+^C:\USERS\L12X19W32.LABHCI\DOCUMENTS\CAPSTONE-SERRANO\CAPSTONE_SERRANO\BUILD\WINDOWS\X64\CMAKEFILES\A72D56AADDF8517DDBBF8F056E13C160\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

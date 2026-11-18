@@ -5,9 +5,18 @@
 
 ## Project Description
 
-Attendance Checker is a Flutter mobile app that makes recording attendance in a classroom fast and paperless. Each student is identified by a unique QR code. An instructor scans the code with the device camera, and the app logs the student as present with the date and time.
+Attendance Checker is a Flutter mobile app that makes recording attendance in a classroom fast and paperless. The teacher generates a QR code for each class session, and students scan it with their devices to mark themselves present. The teacher can then open the attendance list to see who is present for that session.
 
-The app lets instructors view a list of students and open each student's details. It replaces handwritten sign-in sheets, saves time on roll calls, and gives instructors a clear view of who attended.
+## Core Features
+
+- Teacher generates a QR code per class session
+- Students scan the QR code to mark themselves present
+- Attendance list view showing each student's status
+
+## Scope
+
+- One class/section only
+- No reports export
 
 ## Tech Stack
 

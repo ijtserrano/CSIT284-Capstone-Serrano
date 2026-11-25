@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/student.dart';
 import '../services/firestore_service.dart';
 import 'detail_screen.dart';
+import 'summary_screen.dart';
+import 'session_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,7 +56,23 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Attendance Checker')),
+      appBar: AppBar(
+  title: const Text('Attendance Checker'),
+  actions: [
+    IconButton(
+      icon: const Icon(Icons.qr_code),
+      tooltip: 'Start Session',
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (_) => const SessionScreen())),
+    ),
+    IconButton(
+      icon: const Icon(Icons.bar_chart),
+      tooltip: 'Summary',
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (_) => const SummaryScreen())),
+    ),
+  ],
+),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showNameDialog(),
         child: const Icon(Icons.add),

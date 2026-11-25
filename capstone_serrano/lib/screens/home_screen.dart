@@ -4,6 +4,7 @@ import '../services/firestore_service.dart';
 import 'detail_screen.dart';
 import 'summary_screen.dart';
 import 'session_screen.dart';
+import 'checkin_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -70,6 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
       tooltip: 'Summary',
       onPressed: () => Navigator.push(context,
           MaterialPageRoute(builder: (_) => const SummaryScreen())),
+    ),
+        IconButton(
+      icon: const Icon(Icons.how_to_reg),
+      tooltip: 'Check In',
+      onPressed: () async {
+        await Navigator.push(context,
+            MaterialPageRoute(builder: (_) => const CheckInScreen()));
+        refresh();
+      },
     ),
   ],
 ),

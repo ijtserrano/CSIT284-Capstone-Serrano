@@ -4,9 +4,10 @@ import '../models/student.dart';
 
 class FirestoreService {
   static const projectId = 'attendance-checker-a9642';
-  static const apiKey = 'AIzaSyAaYo4a1D418lg47nXfNn8hGQR6D3uY-78';
-  static const base =
-      'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents/students';
+  static const apiKey = 'PASTE_YOUR_API_KEY';
+  static const root =
+      'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents';
+  static const base = '$root/students';
   static const headers = {'Content-Type': 'application/json'};
 
   // READ
@@ -43,7 +44,11 @@ class FirestoreService {
     await http.patch(
       Uri.parse('$base/$id?key=$apiKey&updateMask.fieldPaths=isPresent'),
       headers: headers,
-      body: jsonEncode({'fields': {'isPresent': {'booleanValue': value}}}),
+      body: jsonEncode({
+        'fields': {
+          'isPresent': {'booleanValue': value}
+        }
+      }),
     );
   }
 
@@ -51,12 +56,55 @@ class FirestoreService {
     await http.patch(
       Uri.parse('$base/$id?key=$apiKey&updateMask.fieldPaths=name'),
       headers: headers,
-      body: jsonEncode({'fields': {'name': {'stringValue': name}}}),
+      body: jsonEncode({
+        'fields': {
+          'name': {'stringValue': name}
+        }
+      }),
     );
   }
 
   // DELETE
   Future<void> deleteStudent(String id) async {
     await http.delete(Uri.parse('$base/$id?key=$apiKey'));
+  }
+
+  // CREATE SESSION
+  Future<void> createSession(String code) async {
+    await http.post(
+      Uri.parse('$root/sessions?key=$apiKey'),
+      headers: headers,
+      body: jsonEncode({
+        'fields': {
+          'code': {'stringValue': code},
+          'createdAt': {'stringValue': DateTime.now().toIso8601String()},
+        }
+      }),
+    );
+  }
+
+  // CHECK IF A SESSION CODE EXISTS
+  Future<bool> sessionExists(String code) async {
+    final res = await http.post(
+      Uri.parse('$root:runQuery?key=$apiKey'),
+      headers: headers,
+      body: jsonEncode({
+        'structuredQuery': {
+          'from': [
+            {'collectionId': 'sessions'}
+          ],
+          'where': {
+            'fieldFilter': {
+              'field': {'fieldPath': 'code'},
+              'op': 'EQUAL',
+              'value': {'stringValue': code}
+            }
+          },
+          'limit': 1
+        }
+      }),
+    );
+    final list = jsonDecode(res.body) as List;
+    return list.isNotEmpty && list.first['document'] != null;
   }
 }

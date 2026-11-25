@@ -1,17 +1,7 @@
 class Student {
+  final String id;
   final String name;
-  Student(this.name);
-}
+  final bool isPresent;
 
-List<Student> students = [
-  Student('Anna'),
-  Student('Ben'),
-  Student('Carla'),
-  Student('David'),
-  Student('Ella'),
-  Student('Francis'),
-  Student('Grace'),
-  Student('Henry'),
-  Student('Isabel'),
-  Student('Jake'),
-];
+  Student({required this.id, required this.name, this.isPresent = false});
+}
